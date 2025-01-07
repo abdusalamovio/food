@@ -1,4 +1,45 @@
 window.addEventListener("DOMContentLoaded", () => {
+  // modal
+  const modal = document.querySelector(".modal");
+  const openModalBtn = document.querySelectorAll("[data-modal]");
+  const closeModalBtn = document.querySelector("[data-close]");
+
+  const openModal = () => {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  };
+  openModalBtn.forEach((btn) => {
+    btn.addEventListener("click", openModal);
+  });
+
+  const closeModal = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  };
+  closeModalBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") {
+      closeModal();
+    }
+  });
+
+  const showModalByScroll = () => {
+    const scrollPosition =
+      window.scrollY + document.documentElement.clientHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    if (scrollPosition > documentHeight - 1) {
+      openModal();
+      window.removeEventListener("scroll", showModalByScroll);
+    }
+  };
+  window.addEventListener("scroll", showModalByScroll);
+
   // tabs
   const tabContent = document.querySelectorAll(".tabContent");
   const tabParent = document.querySelector(".tabHeaderItems");
