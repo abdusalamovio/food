@@ -75,4 +75,38 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  // timer
+  const getTimeRemaining = () => {
+    const total = new Date("2025-05-20") - new Date();
+    if (total > 0) {
+      const days = Math.floor(total / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((total / 1000 / 60) % 60);
+      const seconds = Math.floor((total / 1000) % 60);
+      return { days, hours, minutes, seconds, total };
+    }
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  };
+
+  const getZero = (number) => {
+    if (number >= 0 && number <= 9) return `0${number}`;
+    return number;
+  };
+
+  const updateClock = () => {
+    const { days, hours, minutes, seconds, total } = getTimeRemaining();
+
+    document.querySelector("#days").textContent = getZero(days);
+    document.querySelector("#hours").textContent = getZero(hours);
+    document.querySelector("#minutes").textContent = getZero(minutes);
+    document.querySelector("#seconds").textContent = getZero(seconds);
+
+    if (total < 1) {
+      clearInterval(timeInterval);
+    }
+  };
+  const timeInterval = setInterval(updateClock, 1000);
+
+  updateClock();
 });
