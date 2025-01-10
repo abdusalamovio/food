@@ -1,46 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // modal
-  const modal = document.querySelector(".modal");
-  const openModalBtn = document.querySelectorAll("[data-modal]");
-  const closeModalBtn = document.querySelector("[data-close]");
-
-  const openModal = () => {
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden";
-  };
-  openModalBtn.forEach((btn) => {
-    btn.addEventListener("click", openModal);
-  });
-
-  const closeModal = () => {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-  };
-  closeModalBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Escape") {
-      closeModal();
-    }
-  });
-
-  const showModalByScroll = () => {
-    const scrollPosition =
-      window.scrollY + document.documentElement.clientHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    if (scrollPosition > documentHeight - 1) {
-      openModal();
-      window.removeEventListener("scroll", showModalByScroll);
-    }
-  };
-  window.addEventListener("scroll", showModalByScroll);
-
-  // tabs
+  //
   const tabContent = document.querySelectorAll(".tabContent");
   const tabParent = document.querySelector(".tabHeaderItems");
   const tabs = document.querySelectorAll(".tabHeaderItem");
@@ -76,7 +35,45 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // timer
+  //
+  const modal = document.querySelector(".modal");
+  const openModalBtn = document.querySelectorAll("[data-modal]");
+
+  const openModal = () => {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  };
+  openModalBtn.forEach((btn) => {
+    btn.addEventListener("click", openModal);
+  });
+
+  const closeModal = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  };
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.getAttribute("data-close") === "") {
+      closeModal();
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") {
+      closeModal();
+    }
+  });
+
+  const showModalByScroll = () => {
+    const scrollPosition =
+      window.scrollY + document.documentElement.clientHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    if (scrollPosition > documentHeight - 1) {
+      openModal();
+      window.removeEventListener("scroll", showModalByScroll);
+    }
+  };
+  window.addEventListener("scroll", showModalByScroll);
+
+  //
   const getTimeRemaining = () => {
     const total = new Date("2025-05-20") - new Date();
     if (total > 0) {
@@ -110,8 +107,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   updateClock();
 
-  // menu
-
+  //
   class Menu {
     constructor(src, title, descr, price) {
       this.menu = document.querySelector("[data-menu]");
@@ -158,4 +154,54 @@ window.addEventListener("DOMContentLoaded", () => {
     "Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.",
     430
   ).render();
+
+  //
+  document.addEventListener("submit", (e) => {
+    if (e.target.tagName === "FORM") {
+      e.preventDefault();
+
+      const request = new XMLHttpRequest();
+      request.open("POST", "server.php");
+      request.setRequestHeader("Content-type", "application/json");
+
+      const data = new FormData(e.target);
+      const object = {};
+      data.forEach((value, key) => (object[key] = value));
+      const json = JSON.stringify(object);
+      request.send(json);
+
+      request.addEventListener("load", () => {
+        if (request.status === 200) {
+          console.log(request.response);
+          showThanksModal("Спасибо! Скоро мы с вами свяжемся");
+        } else {
+          showThanksModal("Что-то пошло не так...");
+        }
+        e.target.reset();
+      });
+    }
+  });
+
+  const showThanksModal = (message) => {
+    const modalDialog = document.querySelector(".modalDialog");
+    modalDialog.classList.add("hide");
+    openModal();
+
+    const thanksModal = document.createElement("div");
+    thanksModal.classList.add("modalDialog");
+    thanksModal.innerHTML = `
+      <div class="modalContent">
+        <div class="modalClose" data-close>&times;</div>
+        <div class="modalTitle">${message}</div>
+      </div>
+    `;
+    document.querySelector(".modal").append(thanksModal);
+
+    setTimeout(() => {
+      thanksModal.remove();
+      modalDialog.classList.add("show");
+      modalDialog.classList.remove("hide");
+      closeModal();
+    }, 3000);
+  };
 });
