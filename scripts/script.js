@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const tabParent = document.querySelector(".tabHeaderItems");
   const tabs = document.querySelectorAll(".tabHeaderItem");
 
-  const hideTabContent = () => {
+  function hideTabContent() {
     tabContent.forEach((item) => {
       item.classList.add("hide");
       item.classList.remove("show", "fade");
@@ -12,22 +12,21 @@ window.addEventListener("DOMContentLoaded", () => {
     tabs.forEach((item) => {
       item.classList.remove("tabHeaderItemActive");
     });
-  };
+  }
   hideTabContent();
 
-  const showTabContent = (index = 0) => {
+  function showTabContent(index = 0) {
     tabContent[index].classList.add("show", "fade");
     tabContent[index].classList.remove("hide");
 
     tabs[index].classList.add("tabHeaderItemActive");
-  };
+  }
   showTabContent();
 
   tabParent.addEventListener("click", (e) => {
-    const target = e.target;
-    if (target && target.classList.contains("tabHeaderItem")) {
+    if (e.target && target.classList.contains("tabHeaderItem")) {
       tabs.forEach((item, index) => {
-        if (target == item) {
+        if (e.target == item) {
           hideTabContent();
           showTabContent(index);
         }
@@ -39,18 +38,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const modal = document.querySelector(".modal");
   const openModalBtn = document.querySelectorAll("[data-modal]");
 
-  const openModal = () => {
+  function openModal() {
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
-  };
+  }
   openModalBtn.forEach((btn) => {
     btn.addEventListener("click", openModal);
   });
 
-  const closeModal = () => {
+  function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "auto";
-  };
+  }
   modal.addEventListener("click", (e) => {
     if (e.target === modal || e.target.getAttribute("data-close") === "") {
       closeModal();
@@ -62,37 +61,34 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const showModalByScroll = () => {
+  function showModalByScroll() {
     const scrollPosition =
       window.scrollY + document.documentElement.clientHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    if (scrollPosition > documentHeight - 1) {
+    const documentHeight = document.documentElement.scrollHeight - 1;
+    if (scrollPosition > documentHeight) {
       openModal();
       window.removeEventListener("scroll", showModalByScroll);
     }
-  };
+  }
   window.addEventListener("scroll", showModalByScroll);
 
   //
-  const getTimeRemaining = () => {
+  function timeRemaining() {
     const total = new Date("2025-05-20") - new Date();
-    if (total > 0) {
-      const days = Math.floor(total / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((total / 1000 / 60) % 60);
-      const seconds = Math.floor((total / 1000) % 60);
-      return { days, hours, minutes, seconds, total };
-    }
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  };
+    const days = total > 0 ? Math.floor(total / (1000 * 60 * 60 * 24)) : 0;
+    const hours = total > 0 ? Math.floor((total / (1000 * 60 * 60)) % 24) : 0;
+    const minutes = total > 0 ? Math.floor((total / 1000 / 60) % 60) : 0;
+    const seconds = total > 0 ? Math.floor((total / 1000) % 60) : 0;
+    return { days, hours, minutes, seconds, total };
+  }
 
-  const getZero = (number) => {
+  function getZero(number) {
     if (number >= 0 && number <= 9) return `0${number}`;
     return number;
-  };
+  }
 
-  const updateClock = () => {
-    const { days, hours, minutes, seconds, total } = getTimeRemaining();
+  function setClock() {
+    const { days, hours, minutes, seconds, total } = timeRemaining();
 
     document.querySelector("#days").textContent = getZero(days);
     document.querySelector("#hours").textContent = getZero(hours);
@@ -102,19 +98,18 @@ window.addEventListener("DOMContentLoaded", () => {
     if (total < 1) {
       clearInterval(timeInterval);
     }
-  };
-  const timeInterval = setInterval(updateClock, 1000);
-
-  updateClock();
+  }
+  const timeInterval = setInterval(setClock, 1000);
+  setClock();
 
   //
   class Menu {
     constructor(src, title, descr, price) {
-      this.menu = document.querySelector("[data-menu]");
       this.src = src;
       this.title = title;
       this.descr = descr;
       this.price = price;
+      this.menu = document.querySelector("[data-menu]");
     }
 
     render() {
@@ -156,6 +151,29 @@ window.addEventListener("DOMContentLoaded", () => {
   ).render();
 
   //
+  function showThanksModal(message) {
+    const prevModalDialog = document.querySelector(".modalDialog");
+    prevModalDialog.classList.add("hide");
+
+    openModal();
+    const thanksModal = document.createElement("div");
+    thanksModal.classList.add("modalDialog");
+    thanksModal.innerHTML = `
+      <div class="modalContent">
+        <div data-close class="modalClose">&times;</div>
+        <div class="modalTitle">${message}</div>
+      </div>
+    `;
+    modal.append(thanksModal);
+
+    setTimeout(() => {
+      thanksModal.remove();
+      prevModalDialog.classList.add("show");
+      prevModalDialog.classList.remove("hide");
+      closeModal();
+    }, 3000);
+  }
+
   document.addEventListener("submit", (e) => {
     if (e.target.tagName === "FORM") {
       e.preventDefault();
@@ -172,8 +190,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
       request.addEventListener("load", () => {
         if (request.status === 200) {
-          console.log(request.response);
           showThanksModal("Спасибо! Скоро мы с вами свяжемся");
+          console.log(request.response);
         } else {
           showThanksModal("Что-то пошло не так...");
         }
@@ -181,27 +199,4 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
-
-  const showThanksModal = (message) => {
-    const modalDialog = document.querySelector(".modalDialog");
-    modalDialog.classList.add("hide");
-    openModal();
-
-    const thanksModal = document.createElement("div");
-    thanksModal.classList.add("modalDialog");
-    thanksModal.innerHTML = `
-      <div class="modalContent">
-        <div class="modalClose" data-close>&times;</div>
-        <div class="modalTitle">${message}</div>
-      </div>
-    `;
-    document.querySelector(".modal").append(thanksModal);
-
-    setTimeout(() => {
-      thanksModal.remove();
-      modalDialog.classList.add("show");
-      modalDialog.classList.remove("hide");
-      closeModal();
-    }, 3000);
-  };
 });
