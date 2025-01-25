@@ -29,6 +29,9 @@ function slider({
     current.textContent = slideIndex;
   }
 
+  function updatePosition() {
+    sliderInner.style.transform = `translateX(-${offset}px)`;
+  }
   function updateCurrent() {
     if (slides.length < 10) {
       current.textContent = `0${slideIndex}`;
@@ -41,9 +44,6 @@ function slider({
       dot.style.opacity = ".5";
     });
     dots[slideIndex - 1].style.opacity = 1;
-  }
-  function updatePosition() {
-    sliderInner.style.transform = `translateX(-${offset}px)`;
   }
   function deleteNotDigist() {
     return +width.replace(/\D/g, "");

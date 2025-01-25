@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
     "tabHeaderItemActive"
   );
   modal("[data-modal]", ".modal");
-  timer();
+  timer("2025-05-20");
   cards();
   forms("form");
   slider({
