@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>food</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="headerLeft">
+        <div class="headerLogo">
+          <img src="icons/logo.svg" alt="logo" />
+        </div>
+        <div class="headerLinks">
+          <a class="headerLink" href="#">Доставка питания</a>
+          <a class="headerLink" href="#">Второй пункт</a>
+        </div>
+      </div>
+      <button data-modal class="btn whiteBtn">Связаться с нами</button>
+    </div>
+
+    <div class="sidepanel">
+      <div class="sidepanelText"><span>Социальные сети</span></div>
+      <div class="sidepanelDivider"></div>
+      <a class="sidepanelIcon" href="#">
+        <img src="icons/instagram.svg" alt="instagram" />
+      </a>
+      <a class="sidepanelIcon" href="#">
+        <img src="icons/facebook.svg" alt="facebook" />
+      </a>
+    </div>
+
+    <div class="tabs">
+      <div class="container">
+        <div class="tabContainer">
+          <div class="tabContent">
+            <img src="img/tabs/vegy.jpg" alt="vegy" />
+            <div class="tabContentDescr">
+              Меню "Фитнес" - это новый подход к приготовлению блюд: больше
+              свежих овощей и фруктов. Для людей, которые интересуются спортом;
+              активных и здоровых. Это абсолютно новый продукт с оптимальной
+              ценой и высоким качеством!
+            </div>
+          </div>
+          <div class="tabContent">
+            <img src="img/tabs/elite.jpg" alt="elite" />
+            <div class="tabContentDescr">
+              Меню “Премиум” - мы используем не только красивый дизайн упаковки,
+              но и качественное исполнение блюд. Красная рыба, морепродукты,
+              фрукты - ресторанное меню без похода в ресторан!
+            </div>
+          </div>
+          <div class="tabContent">
+            <img src="img/tabs/post.jpg" alt="post" />
+            <div class="tabContentDescr">
+              Наше специальное “Постное меню” - это тщательный подбор
+              ингредиентов: полное отсутствие продуктов животного происхождения.
+              Полная гармония с собой и природой в каждом элементе! Все будет
+              Ом!
+            </div>
+          </div>
+          <div class="tabContent">
+            <img src="img/tabs/hamburger.jpg" alt="hamburger" />
+            <div class="tabContentDescr">
+              Меню "Сбалансированное" - это соответствие вашего рациона всем
+              научным рекомендациям. Мы тщательно просчитываем вашу потребность
+              в к/б/ж/у и создаем лучшие блюда для вас.
+            </div>
+          </div>
+          <div class="tabHeader">
+            <h3>Выберите стиль питания</h3>
+            <div class="tabHeaderItems">
+              <div class="tabHeaderItem tabHeaderItemActive">Фитнес</div>
+              <div class="tabHeaderItem">Премиум</div>
+              <div class="tabHeaderItem">Постное</div>
+              <div class="tabHeaderItem">Сбалансированное</div>
+            </div>
+          </div>
+        </div>
+        <div class="fullLife">Живи полной жизнью!</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="offer">
+      <div
+        style="display: flex; justify-content: space-between"
+        class="container"
+      >
+        <div class="offerText">
+          <h2 class="title">Что мы можем вам предложить?</h2>
+          <div class="offerDescr">
+            Наша основная идея - это правильное питание. Оно может быть простым
+            и вкусным. Мы не просто доставка, мы сервис! Мы взяли на себя все
+            расчеты БЖУ, калорийности, объемов порций и прочие важные, но
+            скучные аспекты. Вам остается только полезная, сытная и правильная
+            еда, которую мы привозим прямо под дверь.
+          </div>
+        </div>
+        <div class="offerAction">
+          <button data-modal class="btn blackBtn">Связаться с нами</button>
+        </div>
+      </div>
+      <div
+        style="display: flex; justify-content: space-between"
+        class="container"
+      >
+        <div class="offerAdvantages">
+          <h2>Быстро и полезно</h2>
+          <div class="offerAdvantagesDescr">
+            Готовка дома занимает много сил, времени и нервов. Мы привозим еду
+            сразу на целый день, и ты можешь действовать так, как тебе удобно,
+            не подстраиваясь ни под кого и будучи уверенным в качестве продукта!
+          </div>
+          <h2>Правильный рацион</h2>
+          <div class="offerAdvantagesDescr">
+            Мы разработали специальное меню, где учтены все нюансы правильного
+            питания, от баланса БЖУ до их приготовления и дробления рациона.
+          </div>
+        </div>
+        <div class="slider">
+          <div class="sliderCounter">
+            <div class="sliderPrev">
+              <img src="icons/arrow-left.svg" alt="prev" />
+            </div>
+            <span id="current">03</span>
+            /
+            <span id="total">04</span>
+            <div class="sliderNext">
+              <img src="icons/arrow-right.svg" alt="next" />
+            </div>
+          </div>
+          <div class="sliderWrapper">
+            <div class="sliderInner">
+              <div class="slide">
+                <img src="img/slider/slide1.jpg" alt="slide" />
+              </div>
+              <div class="slide">
+                <img src="img/slider/slide2.jpg" alt="slide" />
+              </div>
+              <div class="slide">
+                <img src="img/slider/slide3.jpg" alt="slide" />
+              </div>
+              <div class="slide">
+                <img src="img/slider/slide4.jpg" alt="slide" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="calс">
+      <div class="container">
+        <h2 style="text-align: center" class="title">
+          Рассчитаем вашу потребность в калориях?
+        </h2>
+        <div class="calcField">
+          <div class="calcSubtitle">Ваш пол</div>
+          <div id="gender" class="calcChoose">
+            <div id="female" class="calcChooseItem calcChooseItemActive">
+              Женщина
+            </div>
+            <div id="male" class="calcChooseItem">Мужчина</div>
+          </div>
+          <div class="calcSubtitle">Ваша конституция</div>
+          <div class="calcChoose calcChooseMedium">
+            <input
+              class="calcChooseItem"
+              id="height"
+              placeholder="Введите рост"
+              type="text"
+            />
+            <input
+              class="calcChooseItem"
+              id="weight"
+              placeholder="Введите вес"
+              type="text"
+            />
+            <input
+              class="calcChooseItem"
+              id="age"
+              placeholder="Введите возраст"
+              type="text"
+            />
+          </div>
+          <div class="calcSubtitle">Выберите вашу физическая активность</div>
+          <div class="calcChoose calcChooseBig">
+            <div data-ratio="1.2" class="calcChooseItem ratio">
+              Низкая активность
+            </div>
+            <div
+              data-ratio="1.375"
+              class="calcChooseItem calcChooseItemActive ratio"
+            >
+              Невысокая активность
+            </div>
+            <div data-ratio="1.55" class="calcChooseItem ratio">
+              Умеренная активность
+            </div>
+            <div data-ratio="1.725" class="calcChooseItem ratio">
+              Высокая активность
+            </div>
+          </div>
+          <div class="calcDivider"></div>
+          <div class="calcTotal">
+            <div class="calcSubtitle">Ваша суточная норма калорий:</div>
+            <div class="calcResult"><span>2700</span> ккал</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="menu">
+      <h2 style="text-align: center" class="title">Наше меню на день</h2>
+      <div class="menuField">
+        <div
+          data-menu
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+          "
+          class="container"
+        ></div>
+      </div>
+    </div>
+
+    <div class="order">
+      <div class="container">
+        <div style="text-align: center" class="title">
+          Заказывай пробный день прямо сейчас!
+        </div>
+        <form class="orderForm" action="#">
+          <input
+            class="orderInput"
+            name="name"
+            placeholder="Ваше имя"
+            type="text"
+            required
+          />
+          <input
+            class="orderInput"
+            name="phone"
+            placeholder="Ваш номер телефона"
+            type="phone"
+            required
+          />
+          <img src="icons/arrow-right.svg" alt="arrow-right" />
+          <button class="btn blackBtn smallBlackBtn">Перезвонить мне</button>
+        </form>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="promotion">
+      <div style="display: flex" class="container">
+        <div class="promotionText">
+          <div class="title">Акция для новых клиентов!</div>
+          <div class="promotionDescr">
+            Мы ценим каждого клиента и предлагаем вам стать одним из них на
+            очень выгодных условиях. Каждому, кто закажет доставку питание на
+            неделю, будет предоставлена скидка в размере <span>20%!</span>
+            <br />
+            <br />
+            Акция закончится 20 мая в 00:00
+          </div>
+        </div>
+        <div class="promotionTimer">
+          <div style="text-align: right" class="title">
+            Осталось до конца акции:
+          </div>
+          <div class="timer">
+            <div class="timerBlock">
+              <span id="days">12</span>
+              дней
+            </div>
+            <div class="timerBlock">
+              <span id="hours">20</span>
+              часов
+            </div>
+            <div class="timerBlock">
+              <span id="minutes">56</span>
+              минут
+            </div>
+            <div class="timerBlock">
+              <span id="seconds">20</span>
+              секунд
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          height: 100%;
+        "
+        class="container"
+      >
+        <div>
+          <div class="subtitle">Мы в социальных сетях:</div>
+          <a class="link" href="#">Instagram</a>
+          <a class="link" href="#">Facebook</a>
+        </div>
+        <img src="icons/paprika.svg" alt="paprika" />
+        <div style="text-align: right">
+          <div class="subtitle">Или позвоните нам</div>
+          <a class="link" href="#">+380678341034</a>
+          <a class="link" href="#">+380500941356</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="modalDialog">
+        <div class="modalContent">
+          <form action="#">
+            <div data-close class="modalClose">&times;</div>
+            <div class="modalTitle">Мы свяжемся с вами как можно быстрее!</div>
+            <input
+              class="modalInput"
+              name="name"
+              placeholder="Ваше имя"
+              type="text"
+              required
+            />
+            <input
+              class="modalInput"
+              name="phone"
+              placeholder="Ваш номер телефона"
+              type="phone"
+              required
+            />
+            <button class="btn blackBtn smallBlackBtn modalBtn">
+              Перезвонить мне
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="js/bundle.js"></script>
+  </body>
+</html>

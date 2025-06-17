@@ -1,0 +1,38 @@
+{
+  "name": "food",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdusalamovio/food.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    ">1%"
+  ],
+  "bugs": {
+    "url": "https://github.com/abdusalamovio/food/issues"
+  },
+  "homepage": "https://github.com/abdusalamovio/food#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
+    "core-js": "^3.40.0",
+    "json-server": "^1.0.0-beta.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "es6-promise": "^4.2.8",
+    "es6-promise-polyfill": "^1.2.0",
+    "nodelist-foreach-polyfill": "^1.2.0"
+  },
+  "description": ""
+}
